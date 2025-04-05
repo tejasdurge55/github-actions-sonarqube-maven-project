@@ -135,4 +135,4 @@ jobs:
           -Dsonar.java.binaries=target/classes
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://babd2ed4-aeff-4eec-bbe8-10644747820e-10-244-3-23-9000.papa.r.killercoda.com
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
