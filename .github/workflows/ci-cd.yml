@@ -108,6 +108,6 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://cd60ef3d-8b40-4710-8067-d13077f70202-10-244-3-10-9000.papa.r.killercoda.com
+          SONAR_HOST_URL: http://cd60ef3d-8b40-4710-8067-d13077f70202-10-244-3-10-9000.papa.r.killercoda.com
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=GC-Bank -Dsonar.projectName='GC-Bank'
 
