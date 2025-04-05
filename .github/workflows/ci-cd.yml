@@ -134,5 +134,5 @@ jobs:
           -Dsonar.projectKey=my-Java-web-app
           -Dsonar.java.binaries=target/classes
       env:
-        SONAR_TOKEN: sqa_b08a9a00ec6d3b129034faff59430cee3b0c800b
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: https://babd2ed4-aeff-4eec-bbe8-10644747820e-10-244-3-23-9000.papa.r.killercoda.com
