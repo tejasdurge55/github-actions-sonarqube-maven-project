@@ -48,6 +48,10 @@ jobs:
   trivy-scan:
     name: trivy-scan
     runs-on: ubuntu-latest
+    permissions:  # 👈 Add this block
+      security-events: write  # Required for SARIF upload
+      actions: read
+      contents: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -60,6 +64,14 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL'
+      - name: Run Trivy and generate HTML report
+        run: |
+          trivy fs --security-checks vuln,secret --format template --template "@contrib/html.tpl" --output trivy-report.html .    
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: trivy-security-report
+          path: trivy-report.html
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
