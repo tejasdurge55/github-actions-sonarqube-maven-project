@@ -66,7 +66,7 @@ jobs:
           severity: 'CRITICAL'
       - name: Run Trivy and generate HTML report
         run: |
-          trivy fs --security-checks vuln,secret --format template --template "@contrib/html.tpl" --output trivy-report.html .    
+          trivy fs --security-checks vuln,secret --format html --output trivy-report.html .    
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
         with:
