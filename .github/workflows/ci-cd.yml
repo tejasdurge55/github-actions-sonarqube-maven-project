@@ -82,7 +82,7 @@ jobs:
 
   sonarqube:
     runs-on: ubuntu-latest
-    needs: test
+    # needs: test
     steps:
     - uses: actions/checkout@v4
       with:
@@ -92,5 +92,5 @@ jobs:
       uses: SonarSource/sonarqube-scan-action@v5.0.0 # Ex: v4.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://cd60ef3d-8b40-4710-8067-d13077f70202-10-244-3-10-9000.papa.r.killercoda.com
+        SONAR_HOST_URL: http://cd60ef3d-8b40-4710-8067-d13077f70202-10-244-3-10-9000.papa.r.killercoda.com
 
