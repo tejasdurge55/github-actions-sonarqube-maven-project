@@ -141,7 +141,12 @@ jobs:
 
     - name: Remove existing Docker image if present
       run: |
-        docker rmi -f $(docker images -q)
+        if [ "$(docker images -q tejasdurge55/java-maven-webapp:latest)" ]; then
+          echo "Removing existing image tejasdurge55/java-maven-webapp:latest..."
+          docker rmi -f tejasdurge55/java-maven-webapp:latest
+        else
+          echo "No existing image found."
+        fi
 
     - name: Pull and run the new container
       run: |
