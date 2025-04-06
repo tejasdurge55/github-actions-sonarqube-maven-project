@@ -46,7 +46,7 @@ jobs:
     - name: Package with Maven
       run: | 
         mvn package
-        java --add-opens java.base/java.io=ALL-UNNAMED -jar target/*.jar
+        java -jar target/*.jar
 
   # scan:
   #   name: gitleaks
