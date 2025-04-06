@@ -47,6 +47,17 @@ jobs:
       run: | 
         mvn package
         pm2 restart spring-boot-app
+    - name: Nexus Repo Publish
+      uses: sonatype-nexus-community/nexus-repo-github-action@master
+      with:
+        serverUrl: http://ip172-18-0-62-cvp250qim2rg00bb07j0-8081.direct.labs.play-with-docker.com
+        username: admin
+        password: ${{ secrets.NEXUS_PASSWORD }}
+        format: maven2
+        repository: maven-releases
+        coordinates: groupId=com.example artifactId=app version=1.0.0
+        assets: extension=jar
+        filename: target/*.jar
 
   # scan:
   #   name: gitleaks
