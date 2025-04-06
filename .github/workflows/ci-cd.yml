@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  scan:
+  gitleaks-scan:
     name: gitleaks
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,7 @@ jobs:
   trivy-scan:
     name: trivy-scan
     runs-on: ubuntu-latest
-    needs: gitleaks
+    needs: gitleaks-scan
     permissions:  # 👈 Add this block
       security-events: write  # Required for SARIF upload
       actions: read
@@ -60,7 +60,7 @@ jobs:
   sonarqube:
     name: Build and analyze
     runs-on: ubuntu-latest
-    needs: gitleaks
+    needs: gitleaks-scan
 
     steps:
     - name: Checkout code
