@@ -57,7 +57,7 @@ jobs:
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: maven2
         repository: maven-releases
-        coordinates: groupId=com.example artifactId=app version=4.0.0
+        coordinates: groupId=com.example artifactId=app version=4.0.0-${{ github.run_number }}
         assets: extension=jar
         filename: target/*.jar
 
@@ -77,6 +77,28 @@ jobs:
         push: true
         tags: tejasdurge55/java-maven-webapp:latest
         file: ./Dockerfile
+    - name: Remove existing Docker container if present
+      run: |
+        if [ "$(docker ps -a -q -f name=java-tejas-webapp)" ]; then
+          echo "Removing existing container java-tejas-webapp..."
+          docker rm -f java-tejas-webapp
+        else
+          echo "No existing container found."
+        fi
+
+    - name: Remove existing Docker image if present
+      run: |
+        if [ "$(docker images -q tejasdurge55/java-maven-webapp:latest)" ]; then
+          echo "Removing existing image tejasdurge55/java-maven-webapp:latest..."
+          docker rmi -f tejasdurge55/java-maven-webapp:latest
+        else
+          echo "No existing image found."
+        fi
+
+    - name: Pull and run the new container
+      run: |
+        docker run -d -p 9000:8080 --name java-tejas-webapp tejasdurge55/java-maven-webapp:latest
+    
 
   # scan:
   #   name: gitleaks
