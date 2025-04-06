@@ -57,7 +57,7 @@ jobs:
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: maven2
         repository: maven-releases
-        coordinates: groupId=com.example artifactId=app version=3.0.0
+        coordinates: groupId=com.example artifactId=app version=4.0.0
         assets: extension=jar
         filename: target/*.jar
 
