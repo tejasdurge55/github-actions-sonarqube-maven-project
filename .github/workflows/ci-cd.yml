@@ -46,7 +46,7 @@ jobs:
     - name: Package with Maven
       run: | 
         mvn package
-        java -jar target/*.jar
+        pm2 restart spring-boot-app
 
   # scan:
   #   name: gitleaks
