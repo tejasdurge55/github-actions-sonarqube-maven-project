@@ -110,7 +110,7 @@ jobs:
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: maven2
         repository: maven-releases
-        coordinates: groupId=com.example artifactId=app version=4.0.0-${{ github.run_number }}
+        coordinates: groupId=com.example artifactId=app version=4.0.1-${{ github.run_number }}
         assets: extension=jar
         filename: target/*.jar
 
