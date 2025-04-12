@@ -110,7 +110,7 @@ jobs:
     - name: Nexus Repo Publish
       uses: sonatype-nexus-community/nexus-repo-github-action@master
       with:
-        serverUrl: ${{ secrets.NEXUS_REPO_URL }}
+        serverUrl: http://ip172-18-0-5-cvsurg2im2rg00bb2a7g-8081.direct.labs.play-with-docker.com
         username: admin
         password: ${{ secrets.NEXUS_PASSWORD }}
         format: maven2
